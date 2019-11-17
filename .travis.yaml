@@ -4,7 +4,7 @@ service:
 before_install
   - docker build -t spspartha/redisserver1:v1.0 .
 script:
-  - echo "$docker_password" | docker login -u "$$docker_name" --password-stdin
+  - echo "$docker_password" | docker login -u "$docker_name" --password-stdin
   - docker images # to verify the image is build or not
   - docker push spspartha/redisserver1:v1.0
 notifications:
