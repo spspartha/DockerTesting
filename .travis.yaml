@@ -1,0 +1,15 @@
+sudo: required
+service:
+  - docker
+before_install
+  - docker build -t spspartha/redisserver1:v1.0 .
+script:
+  - echo "$docker_password" | docker login -u "$$docker_name" --password-stdin
+  - docker images # to verify the image is build or not
+  - docker push spspartha/redisserver1:v1.0
+notifications:
+  email:
+    receipients:
+      - spspartha@gmail.com
+    on_sucess: always
+    on_failure: always
